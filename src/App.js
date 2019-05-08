@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import fire from './Components/Fire';
+import firebase from './Components/Fire';
 //import Home from './Home';
 import Login from './Login';
 import App2 from './App2';
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   authListener() {
-    fire.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       console.log(user);
       if (user) {
         this.setState({ user });

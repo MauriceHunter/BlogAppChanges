@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from './Fire';
+import firebase from './Fire';
 import { Link } from 'react-router-dom';
 
 class Show extends Component {
@@ -13,7 +13,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const ref = fire.firestore().collection('blogs').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('blogs').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
@@ -28,9 +28,9 @@ class Show extends Component {
   }
 
   delete(id){
-    fire.firestore().collection('blogs').doc(id).delete().then(() => {
+    firebase.firestore().collection('blogs').doc(id).delete().then(() => {
       console.log("Blog successfully deleted!");
-      this.props.history.push("/")
+      this.props.history.push("/Home")
     }).catch((error) => {
       console.error("Error removing blog: ", error);
     });
@@ -41,7 +41,7 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4><Link to="/">Blog List</Link></h4>
+          <h4><Link to="/Home">Blog List</Link></h4>
             <h3 class="panel-title">
               {this.state.blog.title}
             </h3>

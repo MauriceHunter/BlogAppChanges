@@ -9,10 +9,10 @@ var firebaseConfig = {
   storageBucket: "blog-5b1ec.appspot.com",
   messagingSenderId: "690643341652"
   };
-  
+
   // Initialize Firebase
-const fire = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 firebase.firestore().settings(settings)
 
-export default fire;
+export default firebase;

@@ -1,17 +1,21 @@
+// this is the true home page. The logout button doesnt work properly.
+
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
-import fire from './Components/Fire';
+import firebase from './Components/Fire';
+import login from './Login'
 
 class App2 extends Component {
     constructor(props) {
         super(props);
-        this.ref = fire.firestore().collection("blogs").orderBy("date_added", "desc");
+        this.ref = firebase.firestore().collection("blogs").orderBy("date_added", "desc");
         this.unsubscribe = null;
         this.state = {
             blogs: []
         };
-        this.logout = this.logout.bind(this);
+        // this.logout = this.logout.bind(this);
     }
 
     onCollectionUpdate = (snapshot) => {
@@ -36,8 +40,9 @@ class App2 extends Component {
     }
 
     logout() {
-        fire.auth().signOut();
+        firebase.auth().signOut();
     }
+
 
     render() {
         return (

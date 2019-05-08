@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from './Fire';
+import firebase from './Fire';
 import { Link } from 'react-router-dom';
 
 class Edit extends Component {
@@ -10,12 +10,12 @@ class Edit extends Component {
       key: '',
       title: '',
       body: '',
-      date_added: fire.firestore.FieldValue.serverTimestamp()
+      date_added: firebase.firestore.FieldValue.serverTimestamp()
     };
   }
 
   componentDidMount() {
-    const ref = fire.firestore().collection('blogs').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('blogs').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const blog = doc.data();
@@ -43,7 +43,7 @@ class Edit extends Component {
 
     const { title, body, date_added } = this.state;
 
-    const updateRef = fire.firestore().collection('blogs').doc(this.state.key);
+    const updateRef = firebase.firestore().collection('blogs').doc(this.state.key);
     updateRef.set({
       title,
       body,
