@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './App.css';
+//import './App.css';
 import firebase from './Components/Fire';
 import login from './Login'
 
@@ -56,7 +56,7 @@ class App2 extends Component {
                     <div class="panel-body">
                         <h4><Link to="/create">Add Blog</Link></h4>
                         <div>
-                            <h1>Welcome Back</h1>
+                            <h1>Welcome</h1>
                             <button onClick={this.logout}>Logout</button>
                         </div>
                         {/* <table class="table table-stripe">
